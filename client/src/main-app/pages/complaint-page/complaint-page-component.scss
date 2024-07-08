@@ -1,5 +1,6 @@
 .complaint-page-component {
   text-align: left;
+  color: #878787;
 
   @media only screen and (max-width: 767px) {
     width: 100%;
@@ -9,18 +10,19 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 24px;
 
     .complaint-form-content {
       text-align: left;
     }
   }
 
-  .complaint-header {
-    margin-bottom: 32px;
+  .complaint-sub-header {
+    margin-bottom: 16px;
   }
   .complaint-description,
   .complaint-location,
   .complaint-upload-photo {
-    margin-bottom: 16px;
+    margin-bottom: 32px;
   }
 }

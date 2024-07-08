@@ -38,7 +38,7 @@ const UploadPhotoButton = () => {
         />
         {!selectedImage && (
           <ButtonComponent
-            text="Upload Photo"
+            text="Take a photo"
             onClick={() => document.getElementById("upload-photo").click()}
           />
         )}

@@ -23,8 +23,10 @@ export default function ComplaintPageComponent() {
       </div>
       <div className="complaint-form">
         <div className="complaint-form-content">
-          <div className="complaint-header">Tell us what bothers you</div>
           <div className="complaint-description">
+            <div className="complaint-sub-header">
+              Add a description of the accessibility issue
+            </div>
             <TextFieldComponent
               label="Description"
               multiline
@@ -32,8 +34,10 @@ export default function ComplaintPageComponent() {
               onChange={setDescription}
             />
           </div>
-
           <div className="complaint-upload-photo">
+            <div className="complaint-sub-header">
+              Add photos of the accessibility issue
+            </div>
             <UploadPhotoButton />
           </div>
           <ButtonComponent text="Send" onClick={handleSubmit} />

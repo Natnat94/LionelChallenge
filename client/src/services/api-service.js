@@ -9,12 +9,19 @@ export const get = async (path) => {
 export const post = async (path, data) => {
   const url = getUrl(path);
 
+  const formData = new FormData();
+
+  // Append other data to the FormData object
+  for (const key in data) {
+    formData.append(key, data[key]);
+  }
+
   const requestOptions = {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
+    // headers: {
+    //   "Content-Type": "application/json",
+    // },
+    body: formData,
   };
 
   return await fetch(url, requestOptions);

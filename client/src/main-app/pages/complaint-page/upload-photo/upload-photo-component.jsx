@@ -1,20 +1,15 @@
 import React, { useState, useRef } from "react";
 import ButtonComponent from "system/button/button-component";
 
-const UploadPhotoButton = () => {
-  const [selectedImage, setSelectedImage] = useState(null);
+const UploadPhotoButton = ({ selectedImage, setSelectedImage }) => {
   const fileInputRef = useRef(null);
-
-  const handleButtonClick = () => {
-    fileInputRef.current.click();
-  };
 
   const handleFileChange = (event) => {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       // You can now use the selected image file, e.g., display it or upload it to a server
       console.log(file);
-      setSelectedImage(URL.createObjectURL(event.target.files[0]));
+      setSelectedImage(event.target.files[0]);
     }
   };
 
@@ -46,7 +41,7 @@ const UploadPhotoButton = () => {
       {selectedImage && (
         <div>
           <img
-            src={selectedImage}
+            src={URL.createObjectURL(selectedImage)}
             alt="Selected"
             style={{
               maxWidth: "100%",

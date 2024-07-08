@@ -8,12 +8,12 @@ import "./complaint-page-component.scss";
 
 export default function ComplaintPageComponent() {
   const [description, setDescription] = useState("");
-  const [location, setLocation] = useState(null);
-  const [image, setImage] = useState(null);
+  const [location, setLocation] = useState({ latitude: null, longitude: null });
+  const [selectedImage, setSelectedImage] = useState(null);
   const [sentComplaint, setSentComplaint] = useState(false);
 
   const handleSubmit = () => {
-    sendComplaint({ description });
+    sendComplaint({ description, picture: selectedImage });
     setSentComplaint(true);
   };
 
@@ -30,7 +30,7 @@ export default function ComplaintPageComponent() {
     <div className="complaint-page-component">
       <div className="complaint-location">
         {/* <TextFieldComponent label="Address" /> */}
-        <MapComponent />
+        <MapComponent location={location} setLocation={setLocation} />
       </div>
       <div className="complaint-form">
         <div className="complaint-form-content">
@@ -49,7 +49,10 @@ export default function ComplaintPageComponent() {
             <div className="complaint-sub-header">
               Add photos of the accessibility issue
             </div>
-            <UploadPhotoButton />
+            <UploadPhotoButton
+              selectedImage={selectedImage}
+              setSelectedImage={setSelectedImage}
+            />
           </div>
           <ButtonComponent text="Send" onClick={handleSubmit} />
         </div>

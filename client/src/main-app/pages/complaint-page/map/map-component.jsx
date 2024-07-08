@@ -14,8 +14,9 @@ L.Icon.Default.mergeOptions({
     "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
 });
 
-const MapComponent = ({ location, setLocation, style }) => {
+const MapComponent = ({ setLocation, style, points }) => {
   const [error, setError] = useState(null);
+  const location = points[0] || {};
 
   useEffect(() => {
     if (navigator.geolocation) {
@@ -35,6 +36,22 @@ const MapComponent = ({ location, setLocation, style }) => {
     }
   }, []);
 
+  // const renderSinglePoint = () => {
+  //   return (
+  //     <Marker position={[location.latitude, location.longitude]}>
+  //       <Popup>You are here!</Popup>
+  //     </Marker>
+  //   );
+  // };
+
+  const renderPoints = () => {
+    return points.map((point, index) => (
+      <Marker key={index} position={[point.latitude, point.longitude]}>
+        <Popup>{point.name ? point.name : `Point ${index + 1}`}</Popup>
+      </Marker>
+    ));
+  };
+
   return (
     <div>
       {location.latitude && location.longitude ? (
@@ -47,9 +64,7 @@ const MapComponent = ({ location, setLocation, style }) => {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           />
-          <Marker position={[location.latitude, location.longitude]}>
-            <Popup>You are here!</Popup>
-          </Marker>
+          {renderPoints()}
         </MapContainer>
       ) : (
         <p>{error ? `Error: ${error}` : "Getting location..."}</p>

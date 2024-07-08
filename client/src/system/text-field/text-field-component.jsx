@@ -16,6 +16,7 @@ export default function TextFieldComponent({
       multiline={multiline}
       minRows={3}
       onChange={onChnageTextField}
+      autoComplete="off"
     />
   );
 }

@@ -6,7 +6,7 @@ export default function WelcomePageComponent({ complaintsMapPage }) {
     <div className="welcome-page-component">
       <div className="app-name">Role Inclusive</div>
       <div className="app-description">
-        Every report counts: help create a more accessible city for all."
+        Every report counts: help create a more accessible city for all.
       </div>
       <img src="/wheelchair.png" className="welcome-page-background-img" />
       <div className="overlay" />

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import MapComponent from "../complaint-page/map/map-component";
+import ButtonComponent from "system/button/button-component";
 import "./complaints-map-component.scss";
 
 export default function ComplaintsMapComponent() {
@@ -15,6 +16,7 @@ export default function ComplaintsMapComponent() {
         />
       </div>
       <div className="overlay" />
+      <ButtonComponent text="Report an issue" className={"report-button"} />
     </div>
   );
 }

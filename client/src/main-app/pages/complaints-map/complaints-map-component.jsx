@@ -58,12 +58,14 @@ export default function ComplaintsMapComponent({ reportAComplaintPage }) {
       />
 
       <div className={`active-complaint ${activeComplaint ? "open" : ""}`}>
-        <div className="complaint-picture">
-          <img src={activeComplaint?.picture} />
-        </div>
-        <div className="complaint-address">{activeComplaint?.address}</div>
-        <div className="complaint-description">
-          {activeComplaint?.description}
+        <div className="active-complaint-content">
+          <div className="complaint-picture">
+            <img src={activeComplaint?.picture || "default_photo.png"} />
+          </div>
+          <div className="complaint-address">{activeComplaint?.address}</div>
+          <div className="complaint-description">
+            {activeComplaint?.description}
+          </div>
         </div>
       </div>
     </div>

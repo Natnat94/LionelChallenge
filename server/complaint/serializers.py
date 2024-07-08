@@ -13,12 +13,18 @@ class ComplaintSerializer(serializers.ModelSerializer):
 
     # author = serializers.HiddenField(default=serializers.CurrentUserDefault())
     comment_count = serializers.SerializerMethodField()
+    picture_url = serializers.SerializerMethodField()
     class Meta:
         model = Complaint
         exclude = ['author',]
 
     def get_comment_count(self, obj) -> int:
         return obj.comment_set.all().count()
+    
+    def get_picture_url(self,obj) -> str:
+        return obj.custom_file_url
+    
+
 
 
 class CommentSerializer(serializers.ModelSerializer):

@@ -17,6 +17,9 @@ class CommentViewSet(viewsets.ModelViewSet):
     serializer_class = CommentSerializer
 
     def get_queryset(self):
+        # Short-circuit if this is schema generation
+        if getattr(self, 'swagger_fake_view', False):
+            return Comment.objects.none()
         qs = super().get_queryset()
         return qs.filter(complaint=self.kwargs['complaint_pk'])
 

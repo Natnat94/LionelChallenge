@@ -31,9 +31,10 @@ schema_view = schema_view.with_ui("redoc", cache_timeout=0)
 router = DefaultRouter()
 router.register(r"complaints", ComplaintViewSet)
 router.register(r"users", UserViewSet)
+router.register(r"register", RegisterView, basename="register")
 
 complaints_router = NestedSimpleRouter(router, r'complaints', lookup='complaint')
-complaints_router.register(r'comments', CommentViewSet, basename='complaint-comments')
+complaints_router.register(r'comments', CommentViewSet, basename='comments')
 
 
 api_urlpatterns = [

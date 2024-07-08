@@ -10,6 +10,8 @@ services:
       - '8000:8000'
     depends_on:
       - postgres
+    networks:
+      - backend
 
   postgres:
     container_name: postgres_container
@@ -17,14 +19,15 @@ services:
     environment:
       PGUSER: thetribe
       PGPASSWORD: 424242
-            
+
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-SuperSecret}
     volumes:
-            - db:/var/lib/postgresql/data
+      - db:/var/lib/postgresql/data
     ports:
       - '5432:5432'
-
+    networks:
+      - backend
     restart: unless-stopped
 
   pgadmin:
@@ -39,7 +42,23 @@ services:
       - '${PGADMIN_LISTEN_PORT:-49152}:80'
 
     restart: unless-stopped
-
+  minio:
+    image: minio/minio:RELEASE.2022-05-26T05-48-41Z
+    environment:
+      MINIO_ROOT_USER: AKIAIOSFODNN7EXAMPLE
+      MINIO_ROOT_PASSWORD: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+    command: ['server', '/data', '--console-address', ':9001']
+    networks:
+      - backend
+    volumes:
+      - minio:/data
+    ports:
+      - "9000:9000"
+      - "9001:9001"
 volumes:
-    db:
-    dbadmin:
+  db:
+  minio:
+  dbadmin:
+
+networks:
+  backend:

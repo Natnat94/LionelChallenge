@@ -1,0 +1,11 @@
+.welcome-page-component {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+
+  .welcome-message {
+    font-size: 24px;
+    color: white;
+  }
+}

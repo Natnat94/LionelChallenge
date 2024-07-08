@@ -10,7 +10,12 @@ export default function ComplaintsMapComponent({ reportAComplaintPage }) {
 
   useEffect(() => {
     const init = async () => {
-      const complaints = (await getComplaints()) || {};
+      let complaints = [];
+      try {
+        complaints = await getComplaints();
+      } catch (e) {
+        // alert(`Error in fetching complaints: ${e.error}`);
+      }
       const complaintsWithLocation = [];
       for (const complaint of complaints) {
         if (complaint.location) {
@@ -35,7 +40,7 @@ export default function ComplaintsMapComponent({ reportAComplaintPage }) {
           style={{ height: "1000px", width: "100%", zIndex: 1 }}
         />
       </div>
-      <div className="overlay" />
+      {/* <div className="overlay" /> */}
       <ButtonComponent
         text="Report an issue"
         className={"report-button"}

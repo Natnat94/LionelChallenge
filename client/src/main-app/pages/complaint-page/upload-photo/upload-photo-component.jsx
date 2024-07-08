@@ -27,23 +27,35 @@ const UploadPhotoButton = () => {
           accept="image/*"
           onChange={handleImageChange}
         />
-        <ButtonComponent
-          text="Upload Photo"
-          onClick={() => document.getElementById("upload-photo").click()}
-        />
+        {!selectedImage && (
+          <ButtonComponent
+            text="Upload Photo"
+            onClick={() => document.getElementById("upload-photo").click()}
+          />
+        )}
       </label>
       {selectedImage && (
-        <div>
-          <img
-            src={selectedImage}
-            alt="Selected"
-            style={{ maxWidth: "100%", maxHeight: "300px", marginTop: "10px" }}
+        <>
+          {" "}
+          <div>
+            <img
+              src={selectedImage}
+              alt="Selected"
+              style={{
+                maxWidth: "100%",
+                maxHeight: "300px",
+                marginTop: "10px",
+              }}
+            />
+          </div>
+          <ButtonComponent
+            type="submit"
+            style={{ marginTop: "10px" }}
+            text="Submit"
+            onClick={handleSubmit}
           />
-        </div>
+        </>
       )}
-      <button type="submit" style={{ marginTop: "10px" }}>
-        Submit
-      </button>
     </form>
   );
 };

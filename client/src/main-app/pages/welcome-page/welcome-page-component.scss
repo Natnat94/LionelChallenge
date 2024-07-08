@@ -3,10 +3,22 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  width: 100%;
+  background-color: #d9d9d9;
 
-  .welcome-message {
+  .app-name {
     font-size: 24px;
-    color: white;
-    margin-bottom: 16px;
+    color: black;
+    margin-bottom: 32px;
+    font-weight: 500;
+  }
+
+  .app-description {
+    font-size: 18px;
+    color: black;
+    margin-bottom: 32px;
+    color: #878787;
+    padding: 0px 32px;
+    font-weight: 500;
   }
 }

@@ -29,9 +29,13 @@ export default function ComplaintPageComponent() {
 
   return (
     <div className="complaint-page-component">
-      {/* <div className="complaint-location">
-        <MapComponent location={location} setLocation={setLocation} />
-      </div> */}
+      <div className="complaint-location">
+        <MapComponent
+          location={location}
+          setLocation={setLocation}
+          style={{ height: 0, width: 0 }}
+        />
+      </div>
       <div className="complaint-form">
         <div className="complaint-form-content">
           <div className="complaint-description">

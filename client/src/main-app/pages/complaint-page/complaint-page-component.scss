@@ -1,5 +1,6 @@
 .complaint-page-component {
   text-align: left;
+  color: #878787;
 
   @media only screen and (max-width: 767px) {
     width: 100%;
@@ -9,17 +10,34 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 24px;
 
     .complaint-form-content {
       text-align: left;
     }
   }
 
-  .complaint-header {
-    margin-bottom: 32px;
+  .complaint-sub-header {
+    margin-bottom: 16px;
   }
   .complaint-description,
-  .complaint-location {
-    margin-bottom: 16px;
+  .complaint-location,
+  .complaint-upload-photo,
+  .complaint-address {
+    margin-bottom: 32px;
+  }
+}
+
+.sent-complaint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px;
+  color: #878787;
+
+  .success-image {
+    height: 80px;
+    margin-bottom: 32px;
   }
 }

@@ -1,0 +1,46 @@
+version: '3.9'
+
+services:
+  backend:
+    build:
+      context: .
+    command: poetry run python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app:cached # For development only.
+    ports:
+      - '8000:8000'
+    depends_on:
+      - postgres
+
+  postgres:
+    container_name: postgres_container
+    image: postgis/postgis
+    environment:
+      PGUSER: thetribe
+      PGPASSWORD: 424242
+            
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-SuperSecret}
+    volumes:
+            - db:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+
+    restart: unless-stopped
+
+  pgadmin:
+    container_name: pgadmin_container
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin@pgadmin.org}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-SuperSecret}
+    volumes:
+      - dbadmin:/var/lib/pgadmin
+    ports:
+      - '${PGADMIN_LISTEN_PORT:-49152}:80'
+
+    restart: unless-stopped
+
+volumes:
+    db:
+    dbadmin:

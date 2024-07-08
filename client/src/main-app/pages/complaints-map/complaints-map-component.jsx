@@ -7,6 +7,7 @@ import "./complaints-map-component.scss";
 export default function ComplaintsMapComponent({ reportAComplaintPage }) {
   const [location, setLocation] = useState({ latitude: null, longitude: null });
   const [allComplaints, setAllComplaints] = useState([]);
+  const [activeComplaint, setActiveComplaint] = useState(null);
 
   useEffect(() => {
     const init = async () => {
@@ -30,13 +31,22 @@ export default function ComplaintsMapComponent({ reportAComplaintPage }) {
     init();
   }, []);
 
+  const onMarkerClick = (complaint) => {
+    setActiveComplaint(complaint);
+  };
+
+  const closeActiveComplaint = (e) => {
+    setActiveComplaint(null);
+  };
+
   return (
     <div className="complaints-map-component">
-      <div className="map-wrapper">
+      <div className="map-wrapper" onClick={closeActiveComplaint}>
         <MapComponent
           location={location}
           setLocation={setLocation}
           points={allComplaints}
+          onMarkerClick={onMarkerClick}
           style={{ height: "1000px", width: "100%", zIndex: 1 }}
         />
       </div>
@@ -46,6 +56,16 @@ export default function ComplaintsMapComponent({ reportAComplaintPage }) {
         className={"report-button"}
         onClick={reportAComplaintPage}
       />
+
+      <div className={`active-complaint ${activeComplaint ? "open" : ""}`}>
+        <div className="complaint-picture">
+          <img src={activeComplaint?.picture} />
+        </div>
+        <div className="complaint-address">{activeComplaint?.address}</div>
+        <div className="complaint-description">
+          {activeComplaint?.description}
+        </div>
+      </div>
     </div>
   );
 }

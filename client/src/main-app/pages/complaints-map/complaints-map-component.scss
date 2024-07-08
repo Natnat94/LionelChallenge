@@ -30,4 +30,26 @@
     z-index: 10;
     width: 200px;
   }
+
+  .active-complaint {
+    width: 100%;
+    height: 0;
+    z-index: 20;
+    background-color: white;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    transition: height 0.5s ease-in-out;
+
+    .complaint-picture,
+    .complaint-address {
+      margin-bottom: 16px;
+    }
+  }
+
+  .active-complaint.open {
+    height: 70%;
+  }
 }

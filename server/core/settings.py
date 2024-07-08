@@ -167,7 +167,7 @@ AWS_SECRET_ACCESS_KEY = os.getenv("STORAGE_SECRET_KEY", "wJalrXUtnFEMI/K7MDENG/b
 
 AWS_S3_USE_SSL = os.getenv("STORAGE_SSL", "false")
 
-AWS_S3_ENDPOINT_URL = os.getenv("STORAGE_ENDPOINT", "http://172.31.0.3:9000")
+AWS_S3_ENDPOINT_URL = os.getenv("STORAGE_ENDPOINT", "http://172.19.0.2:9000")
 
 AWS_STORAGE_BUCKET_NAME = os.getenv("STORAGE_BUCKET", "uploadedpictures")
 

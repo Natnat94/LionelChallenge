@@ -14,7 +14,7 @@ L.Icon.Default.mergeOptions({
     "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
 });
 
-const MapComponent = ({ setLocation, style, points }) => {
+const MapComponent = ({ setLocation, style, points, onMarkerClick }) => {
   const [error, setError] = useState(null);
   const location = points[0] || {};
 
@@ -46,7 +46,16 @@ const MapComponent = ({ setLocation, style, points }) => {
 
   const renderPoints = () => {
     return points.map((point, index) => (
-      <Marker key={index} position={[point.latitude, point.longitude]}>
+      <Marker
+        key={index}
+        position={[point.latitude, point.longitude]}
+        eventHandlers={{
+          click: (e) => {
+            e.originalEvent.stopPropagation();
+            onMarkerClick(point);
+          },
+        }}
+      >
         <Popup>{point.name ? point.name : `Point ${index + 1}`}</Popup>
       </Marker>
     ));

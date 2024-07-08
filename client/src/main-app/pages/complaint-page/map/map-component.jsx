@@ -14,7 +14,7 @@ L.Icon.Default.mergeOptions({
     "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
 });
 
-const LocationMap = () => {
+const MapComponent = () => {
   const [location, setLocation] = useState({ latitude: null, longitude: null });
   const [error, setError] = useState(null);
 
@@ -59,4 +59,4 @@ const LocationMap = () => {
   );
 };
 
-export default LocationMap;
+export default MapComponent;

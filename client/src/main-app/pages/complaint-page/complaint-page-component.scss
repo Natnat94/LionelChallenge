@@ -1,0 +1,25 @@
+.complaint-page-component {
+  text-align: left;
+
+  @media only screen and (max-width: 767px) {
+    width: 100%;
+  }
+
+  .complaint-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .complaint-form-content {
+      text-align: left;
+    }
+  }
+
+  .complaint-header {
+    margin-bottom: 32px;
+  }
+  .complaint-description,
+  .complaint-location {
+    margin-bottom: 16px;
+  }
+}

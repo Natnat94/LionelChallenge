@@ -1,4 +1,9 @@
 .welcome-page-component {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
   .welcome-message {
     font-size: 24px;
     color: white;

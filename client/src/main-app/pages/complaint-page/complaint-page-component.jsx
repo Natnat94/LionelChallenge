@@ -9,6 +9,7 @@ import "./complaint-page-component.scss";
 export default function ComplaintPageComponent() {
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState({ latitude: null, longitude: null });
+  const [address, setAddress] = useState("");
   const [selectedImage, setSelectedImage] = useState(null);
   const [sentComplaint, setSentComplaint] = useState(false);
 
@@ -28,10 +29,9 @@ export default function ComplaintPageComponent() {
 
   return (
     <div className="complaint-page-component">
-      <div className="complaint-location">
-        {/* <TextFieldComponent label="Address" /> */}
+      {/* <div className="complaint-location">
         <MapComponent location={location} setLocation={setLocation} />
-      </div>
+      </div> */}
       <div className="complaint-form">
         <div className="complaint-form-content">
           <div className="complaint-description">
@@ -44,6 +44,12 @@ export default function ComplaintPageComponent() {
               value={description}
               onChange={setDescription}
             />
+          </div>
+          <div className="complaint-address">
+            <div className="complaint-sub-header">
+              Add the address of the accessibility issue
+            </div>
+            <TextFieldComponent label="Address" onChange={setAddress} />
           </div>
           <div className="complaint-upload-photo">
             <div className="complaint-sub-header">

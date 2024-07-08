@@ -8,6 +8,8 @@ from rest_framework import permissions
 from rest_framework.routers import DefaultRouter
 from complaint.views import *
 from user.views import *
+from rest_framework_nested.routers import NestedSimpleRouter
+
 
 __all__ = ["api_urlpatterns"]
 
@@ -30,8 +32,13 @@ router = DefaultRouter()
 router.register(r"complaints", ComplaintViewSet)
 router.register(r"users", UserViewSet)
 
+complaints_router = NestedSimpleRouter(router, r'complaints', lookup='complaint')
+complaints_router.register(r'comments', CommentViewSet, basename='complaint-comments')
+
+
 api_urlpatterns = [
     re_path(r"^$", schema_view, name="schema-swagger-ui"),
     path("", include(router.urls)),
+    path("", include(complaints_router.urls)),
 
 ]

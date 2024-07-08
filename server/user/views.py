@@ -12,3 +12,12 @@ __all__=['UserViewSet']
 class UserViewSet(viewsets.ModelViewSet):
     queryset= User.objects.all()
     serializer_class = UserSerializer
+
+    def get_serializer(self, *args, **kwargs):
+        return super().get_serializer(*args, **kwargs)
+    
+    def get_serializer_class(self):
+        if self.action == "create":
+            # return CreateUserSerializer
+            pass
+        return super().get_serializer_class()

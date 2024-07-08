@@ -46,4 +46,5 @@ ENV SECRET_KEY=changeme
 
 COPY ./pyproject.toml ./poetry.lock ./
 RUN poetry install
+RUN poetry run python manage.py migrate
 COPY . ./

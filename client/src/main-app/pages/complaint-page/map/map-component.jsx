@@ -14,8 +14,7 @@ L.Icon.Default.mergeOptions({
     "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
 });
 
-const LocationMap = () => {
-  const [location, setLocation] = useState({ latitude: null, longitude: null });
+const MapComponent = ({ location, setLocation, style }) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -42,7 +41,7 @@ const LocationMap = () => {
         <MapContainer
           center={[location.latitude, location.longitude]}
           zoom={13}
-          style={{ height: "80px", width: "100%" }}
+          style={{ height: "80px", width: "100%", ...style }}
         >
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -59,4 +58,4 @@ const LocationMap = () => {
   );
 };
 
-export default LocationMap;
+export default MapComponent;

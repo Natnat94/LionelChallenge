@@ -10,7 +10,7 @@ export default function ComplaintPageComponent() {
         <TextFieldComponent label="Description" />
       </div>
       <div className="complaint-location">
-        <TextFieldComponent label="Location" />
+        <TextFieldComponent label="Address" />
       </div>
       <div className="complaint-upload-photo">
         {/* <ButtonComponent text="Upload photo" /> */}

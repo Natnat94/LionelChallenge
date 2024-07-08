@@ -3,17 +3,9 @@ import ButtonComponent from "system/button/button-component";
 
 const UploadPhotoButton = () => {
   const [selectedImage, setSelectedImage] = useState(null);
-  const fileInputRef = useRef(null);
 
-  const handleButtonClick = () => {
-    fileInputRef.current.click();
-  };
-
-  const handleFileChange = (event) => {
-    if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      // You can now use the selected image file, e.g., display it or upload it to a server
-      console.log(file);
+  const handleImageChange = (event) => {
+    if (event.target.files && event.target.files[0]) {
       setSelectedImage(URL.createObjectURL(event.target.files[0]));
     }
   };
@@ -28,13 +20,12 @@ const UploadPhotoButton = () => {
     <form onSubmit={handleSubmit}>
       <label htmlFor="upload-photo">
         <input
-          type="file"
-          ref={fileInputRef}
-          accept="image/*"
-          capture="environment"
-          id="upload-photo"
           style={{ display: "none" }}
-          onChange={handleFileChange}
+          id="upload-photo"
+          name="upload-photo"
+          type="file"
+          accept="image/*"
+          onChange={handleImageChange}
         />
         {!selectedImage && (
           <ButtonComponent

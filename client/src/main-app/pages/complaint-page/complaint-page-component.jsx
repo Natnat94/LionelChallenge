@@ -17,7 +17,7 @@ export default function ComplaintPageComponent() {
     setSentComplaint(true);
   };
 
-  if (sentComplaint || true) {
+  if (sentComplaint) {
     return (
       <div className="sent-complaint">
         <img className="success-image" src="/sent-complaint.png" />

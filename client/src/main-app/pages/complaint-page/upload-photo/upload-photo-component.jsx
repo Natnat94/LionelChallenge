@@ -44,25 +44,17 @@ const UploadPhotoButton = () => {
         )}
       </label>
       {selectedImage && (
-        <>
-          <div>
-            <img
-              src={selectedImage}
-              alt="Selected"
-              style={{
-                maxWidth: "100%",
-                maxHeight: "300px",
-                marginTop: "10px",
-              }}
-            />
-          </div>
-          <ButtonComponent
-            type="submit"
-            style={{ marginTop: "10px" }}
-            text="Submit"
-            onClick={handleSubmit}
+        <div>
+          <img
+            src={selectedImage}
+            alt="Selected"
+            style={{
+              maxWidth: "100%",
+              maxHeight: "300px",
+              marginTop: "10px",
+            }}
           />
-        </>
+        </div>
       )}
     </form>
   );

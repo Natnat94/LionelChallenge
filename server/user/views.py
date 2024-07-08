@@ -1,4 +1,7 @@
 from django.shortcuts import render
+
+# Create your views here.
+from django.shortcuts import render
 from rest_framework import mixins, viewsets, status
 from .models import User
 from .serializers import UserSerializer

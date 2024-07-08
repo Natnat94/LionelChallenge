@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
-    "authentification",
+    "user",
     "complaint",
     "drf_yasg",
 ]
@@ -135,7 +135,7 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-AUTH_USER_MODEL = "authentification.User"
+AUTH_USER_MODEL = "user.User"
 
 
 # Django Rest Framework
@@ -146,5 +146,3 @@ REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": ("rest_framework.authentication.SessionAuthentication",),
     "PAGE_SIZE": 10,
 }
-
-SS = "kkjkjk"

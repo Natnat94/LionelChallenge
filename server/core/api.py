@@ -7,7 +7,7 @@ from drf_yasg.views import get_schema_view
 from rest_framework import permissions
 from rest_framework.routers import DefaultRouter
 from complaint.views import *
-from authentification.views import *
+from user.views import *
 
 __all__ = ["api_urlpatterns"]
 

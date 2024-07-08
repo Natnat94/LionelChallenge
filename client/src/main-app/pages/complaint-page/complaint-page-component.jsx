@@ -4,9 +4,10 @@ import TextFieldComponent from "system/text-field/text-field-component";
 import UploadPhotoButton from "./upload-photo/upload-photo-component";
 import MapComponent from "./map/map-component";
 import { sendComplaint } from "services/complaints-api-service";
+import NavigateBackComponent from "system/navigate-back/navigate-back-component";
 import "./complaint-page-component.scss";
 
-export default function ComplaintPageComponent() {
+export default function ComplaintPageComponent({ complaintsMapPage }) {
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState({ latitude: null, longitude: null });
   const [address, setAddress] = useState("");
@@ -34,6 +35,10 @@ export default function ComplaintPageComponent() {
 
   return (
     <div className="complaint-page-component">
+      <NavigateBackComponent
+        title="Report an issue"
+        navigateBackAction={complaintsMapPage}
+      />
       <div className="complaint-location">
         <MapComponent
           points={[location]}

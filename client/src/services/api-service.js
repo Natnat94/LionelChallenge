@@ -1,7 +1,7 @@
-const REMOTE_HOST = "https://9ac5-92-174-89-249.ngrok-free.app";
-const LOCAL_HOST = "http://localhost:8000";
+const HOST = "https://9ac5-92-174-89-249.ngrok-free.app";
+// const HOST = "http://localhost:8000";
 
-const HOST = LOCAL_HOST;
+// const HOST = REMOTE_HOST;
 
 export const get = async (path) => {
   const url = getUrl(path);

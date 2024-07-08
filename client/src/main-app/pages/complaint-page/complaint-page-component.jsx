@@ -1,5 +1,5 @@
 import TextFieldComponent from "system/text-field/text-field-component";
-import ButtonComponent from "system/button/button-component";
+import UploadPhotoButton from "./upload-photo/upload-photo-component";
 import "./complaint-page-component.scss";
 
 export default function ComplaintPageComponent() {
@@ -13,7 +13,8 @@ export default function ComplaintPageComponent() {
         <TextFieldComponent label="Location" />
       </div>
       <div className="complaint-upload-photo">
-        <ButtonComponent text="Upload photo" />
+        {/* <ButtonComponent text="Upload photo" /> */}
+        <UploadPhotoButton />
       </div>
     </div>
   );

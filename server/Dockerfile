@@ -45,6 +45,14 @@ ENV PYTHONPATH=/usr/src/server
 ENV SECRET_KEY=changeme
 
 COPY ./pyproject.toml ./poetry.lock ./
+COPY ./start.sh ./
+
 RUN poetry install
-RUN poetry run python manage.py migrate
 COPY . ./
+
+# RUN chmod +x start.sh
+# Ensure the script has the execute permissions
+RUN chmod +x start.sh
+
+# Command to run the script
+CMD ["./start.sh"]

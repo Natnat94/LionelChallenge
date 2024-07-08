@@ -4,7 +4,7 @@ services:
   backend:
     build:
       context: .
-    command: poetry run python manage.py runserver 0.0.0.0:8000
+    command: ./start.sh
     volumes:
       - .:/app:cached # For development only.
     ports:

@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 
+__all__ = ["Comment", "Complaint"]
 
 # Create your models here.
 class Complaint(models.Model):
@@ -14,3 +15,11 @@ class Complaint(models.Model):
 
 
 
+class Comment(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    last_modified = models.DateTimeField(auto_now=True)
+    author = models.ForeignKey(get_user_model(), on_delete=models.DO_NOTHING, null=True, blank=True)
+    complaint = models.ForeignKey(Complaint, on_delete=models.CASCADE)
+    body = models.TextField(blank=True, null=True)
+
+    

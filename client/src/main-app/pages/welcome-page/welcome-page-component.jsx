@@ -1,7 +1,7 @@
 import ButtonComponent from "system/button/button-component";
 import "./welcome-page-component.scss";
 
-export default function WelcomePageComponent({ reportAComplaint }) {
+export default function WelcomePageComponent({ complaintsMapPage }) {
   return (
     <div className="welcome-page-component">
       <div className="app-name">Role Inclusive</div>
@@ -13,7 +13,7 @@ export default function WelcomePageComponent({ reportAComplaint }) {
       <div className="button-wrapper">
         <ButtonComponent
           text="Next"
-          onClick={reportAComplaint}
+          onClick={complaintsMapPage}
           className="welcome-page-next-button"
         />
       </div>

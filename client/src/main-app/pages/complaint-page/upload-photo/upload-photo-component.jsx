@@ -27,12 +27,10 @@ const UploadPhotoButton = () => {
           accept="image/*"
           onChange={handleImageChange}
         />
-        <button
-          type="button"
+        <ButtonComponent
+          text="Upload Photo"
           onClick={() => document.getElementById("upload-photo").click()}
-        >
-          Upload Photo
-        </button>
+        />
       </label>
       {selectedImage && (
         <div>

@@ -14,9 +14,15 @@ L.Icon.Default.mergeOptions({
     "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
 });
 
-const MapComponent = ({ setLocation, style, points, onMarkerClick }) => {
+const MapComponent = ({
+  setLocation,
+  style,
+  points,
+  onMarkerClick,
+  location: singleLocation,
+}) => {
   const [error, setError] = useState(null);
-  const location = points[0] || {};
+  const location = points[0] || singleLocation || {};
 
   useEffect(() => {
     if (navigator.geolocation) {

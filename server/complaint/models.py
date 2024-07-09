@@ -30,6 +30,9 @@ class Complaint(geomodels.Model):
             return original_url.replace("172.16.238.10:9000", "localhost:9000")
         return None
 
+    def __str__(self) -> str:
+        return f"({self.pk}) - {self.created_at.strftime('%d/%m/%y %H:%M:%S')} - {self.address}, {self.postal_code}"
+
 
 class Comment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
@@ -39,3 +42,6 @@ class Comment(models.Model):
     )
     complaint = models.ForeignKey(Complaint, on_delete=models.CASCADE)
     body = models.TextField(blank=True, null=True)
+
+    def __str__(self) -> str:
+        return f"({self.pk}) Complaint {self.complaint.pk} - {self.created_at.strftime('%d/%m/%y %H:%M:%S')}"

@@ -61,7 +61,7 @@ export default function ComplaintsMapComponent({ reportAComplaintPage }) {
       </div>
       {/* <div className="overlay" /> */}
       <ButtonComponent
-        text="Report an issue"
+        text="Déclarer un problème"
         className={"report-button"}
         onClick={reportAComplaintPage}
       />

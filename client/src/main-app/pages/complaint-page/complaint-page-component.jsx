@@ -36,7 +36,7 @@ export default function ComplaintPageComponent({ complaintsMapPage }) {
   return (
     <div className="complaint-page-component">
       <NavigateBackComponent
-        title="Report an issue"
+        title="Déclarer un problème"
         navigateBackAction={complaintsMapPage}
       />
       <div className="complaint-location">

@@ -22,7 +22,7 @@ export default function ComplaintsMapComponent({ reportAComplaintPage }) {
         if (complaint.location) {
           const [latitude, longitude] = complaint.location.split(",");
           const randNumber = Math.floor(Math.random() * 10) + 1;
-
+          // We put some distance between points so if they are in the same location they will be clickable separately
           complaint.latitude = (
             parseFloat(latitude) +
             0.0001 * randNumber

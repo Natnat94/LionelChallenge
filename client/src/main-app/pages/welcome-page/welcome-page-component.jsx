@@ -1,19 +1,21 @@
 import ButtonComponent from "system/button/button-component";
 import "./welcome-page-component.scss";
 
-export default function WelcomePageComponent({ complaintsMapPage }) {
+export default function WelcomePageComponent({ InstructionsPage }) {
   return (
     <div className="welcome-page-component">
-      <div className="app-name">Role Inclusive</div>
+      <img src="/wheelchairmap.png" className="welcome-page-small-img" />
+      <div className="app-name">Clear Access</div>
       <div className="app-description">
-        Every report counts: help create a more accessible city for all.
+        Chaque signalement compte : participez à la création d'une ville plus
+        accessible pour tous.
       </div>
-      <img src="/wheelchair.png" className="welcome-page-background-img" />
-      <div className="overlay" />
+      <img src="/background.png" className="welcome-page-background-img" />
+      {/* <div className="overlay" /> */}
       <div className="button-wrapper">
         <ButtonComponent
-          text="Next"
-          onClick={complaintsMapPage}
+          text="Suivant"
+          onClick={InstructionsPage}
           className="welcome-page-next-button"
         />
       </div>

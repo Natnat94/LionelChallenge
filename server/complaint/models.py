@@ -10,11 +10,12 @@ def user_directory_path(instance, filename):
     return f"uploaded_file_{uuid4()}.{filename.split('.')[-1]}"
 
 
-# Create your models here.
 class Complaint(geomodels.Model):
     created_at = geomodels.DateTimeField(auto_now_add=True)
     last_modified = geomodels.DateTimeField(auto_now=True)
-    author = geomodels.ForeignKey(get_user_model(), on_delete=models.DO_NOTHING, null=True, blank=True)
+    author = geomodels.ForeignKey(
+        get_user_model(), on_delete=models.DO_NOTHING, null=True, blank=True
+    )
     description = geomodels.TextField(blank=True, null=True)
     priority = geomodels.CharField(max_length=50, blank=True, null=True)
     address = geomodels.CharField(max_length=150, blank=True, null=True)
@@ -24,15 +25,17 @@ class Complaint(geomodels.Model):
 
     @property
     def custom_file_url(self):
-        if self.picture and hasattr(self.picture, 'url'):
+        if self.picture and hasattr(self.picture, "url"):
             original_url = self.picture.url
-            return original_url.replace('172.16.238.10:9000', 'localhost:9000')
+            return original_url.replace("172.16.238.10:9000", "localhost:9000")
         return None
 
 
 class Comment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
-    author = models.ForeignKey(get_user_model(), on_delete=models.DO_NOTHING, null=True, blank=True)
+    author = models.ForeignKey(
+        get_user_model(), on_delete=models.DO_NOTHING, null=True, blank=True
+    )
     complaint = models.ForeignKey(Complaint, on_delete=models.CASCADE)
     body = models.TextField(blank=True, null=True)

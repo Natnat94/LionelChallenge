@@ -4,9 +4,10 @@ import TextFieldComponent from "system/text-field/text-field-component";
 import UploadPhotoButton from "./upload-photo/upload-photo-component";
 import MapComponent from "./map/map-component";
 import { sendComplaint } from "services/complaints-api-service";
+import NavigateBackComponent from "system/navigate-back/navigate-back-component";
 import "./complaint-page-component.scss";
 
-export default function ComplaintPageComponent() {
+export default function ComplaintPageComponent({ complaintsMapPage }) {
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState({ latitude: null, longitude: null });
   const [address, setAddress] = useState("");
@@ -14,7 +15,12 @@ export default function ComplaintPageComponent() {
   const [sentComplaint, setSentComplaint] = useState(false);
 
   const handleSubmit = () => {
-    sendComplaint({ description, picture: selectedImage });
+    sendComplaint({
+      description,
+      picture: selectedImage,
+      location,
+      address,
+    });
     setSentComplaint(true);
   };
 
@@ -29,9 +35,13 @@ export default function ComplaintPageComponent() {
 
   return (
     <div className="complaint-page-component">
+      <NavigateBackComponent
+        title="Déclarer un problème"
+        navigateBackAction={complaintsMapPage}
+      />
       <div className="complaint-location">
         <MapComponent
-          location={location}
+          points={[location]}
           setLocation={setLocation}
           style={{ height: 0, width: 0 }}
         />
@@ -53,7 +63,11 @@ export default function ComplaintPageComponent() {
             <div className="complaint-sub-header">
               Add the address of the accessibility issue
             </div>
-            <TextFieldComponent label="Address" onChange={setAddress} />
+            <TextFieldComponent
+              label="Address"
+              onChange={setAddress}
+              value={address}
+            />
           </div>
           <div className="complaint-upload-photo">
             <div className="complaint-sub-header">

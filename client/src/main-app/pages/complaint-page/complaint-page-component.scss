@@ -26,6 +26,11 @@
   .complaint-address {
     margin-bottom: 32px;
   }
+
+  .complaint-description,
+  .complaint-address {
+    width: 100%;
+  }
 }
 
 .sent-complaint {

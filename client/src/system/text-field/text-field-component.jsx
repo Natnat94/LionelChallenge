@@ -1,4 +1,5 @@
 import { TextField } from "@mui/material";
+import "./text-field-component.scss";
 
 export default function TextFieldComponent({
   label,
@@ -16,6 +17,8 @@ export default function TextFieldComponent({
       multiline={multiline}
       minRows={3}
       onChange={onChnageTextField}
+      autoComplete="off"
+      className="text-field"
     />
   );
 }

@@ -18,7 +18,7 @@ export default function ComplaintPageComponent({ complaintsMapPage }) {
     sendComplaint({
       description,
       picture: selectedImage,
-      location: [location.latitude, location.longitude],
+      location,
       address,
     });
     setSentComplaint(true);

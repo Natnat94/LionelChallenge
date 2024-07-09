@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import MapComponent from "../complaint-page/map/map-component";
 import ButtonComponent from "system/button/button-component";
 import { getComplaints } from "services/complaints-api-service";
+import { changeHost } from "services/url-service";
 import "./complaints-map-component.scss";
 
 export default function ComplaintsMapComponent({ reportAComplaintPage }) {
@@ -68,7 +69,15 @@ export default function ComplaintsMapComponent({ reportAComplaintPage }) {
       <div className={`active-complaint ${activeComplaint ? "open" : ""}`}>
         <div className="active-complaint-content">
           <div className="complaint-picture">
-            <img src={activeComplaint?.picture_url || "default_photo.png"} />
+            {activeComplaint && (
+              <img
+                src={
+                  activeComplaint
+                    ? changeHost(activeComplaint.picture_url)
+                    : "default_photo.png"
+                }
+              />
+            )}
           </div>
           <div className="complaint-address">{activeComplaint?.address}</div>
           <div className="complaint-description">

@@ -1,0 +1,12 @@
+.navigate-back-component {
+  color: black;
+  display: flex;
+  padding: 32px;
+  font-weight: 500;
+  font-size: 20px;
+
+  .navigate-back-arrow {
+    margin-right: 16px;
+    cursor: pointer;
+  }
+}

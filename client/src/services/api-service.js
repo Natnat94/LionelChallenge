@@ -1,9 +1,16 @@
-const HOST = "https://9ac5-92-174-89-249.ngrok-free.app";
-// const HOST = "http://localhost:8000";
+export const HOST = "https://c94f-92-174-89-249.ngrok-free.app";
+// export const HOST = "http://localhost:8000";
 
 export const get = async (path) => {
   const url = getUrl(path);
-  return await fetch(url);
+  const requestOptions = {
+    method: "GET",
+    headers: {
+      // "Content-Type": "application/json",
+      "ngrok-skip-browser-warning": true,
+    },
+  };
+  return (await fetch(url, requestOptions)).json();
 };
 
 export const post = async (path, data) => {
@@ -13,14 +20,20 @@ export const post = async (path, data) => {
 
   // Append other data to the FormData object
   for (const key in data) {
-    formData.append(key, data[key]);
+    if (typeof data[key] === "object" && !(data[key] instanceof File)) {
+      // If the value is an object and not a file, stringify it
+      formData.append(key, JSON.stringify(data[key]));
+    } else {
+      // Otherwise, append it directly (handles files and other simple types)
+      formData.append(key, data[key]);
+    }
   }
 
   const requestOptions = {
     method: "POST",
-    // headers: {
-    //   "Content-Type": "application/json",
-    // },
+    headers: {
+      "ngrok-skip-browser-warning": true,
+    },
     body: formData,
   };
 

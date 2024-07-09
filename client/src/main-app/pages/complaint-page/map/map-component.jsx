@@ -63,7 +63,7 @@ const MapComponent = ({ setLocation, style, points, onMarkerClick }) => {
 
   return (
     <div>
-      {location.latitude && location.longitude ? (
+      {location.latitude && location.longitude && (
         <MapContainer
           center={[location.latitude, location.longitude]}
           zoom={13}
@@ -75,8 +75,6 @@ const MapComponent = ({ setLocation, style, points, onMarkerClick }) => {
           />
           {renderPoints()}
         </MapContainer>
-      ) : (
-        <p>{error ? `Error: ${error}` : "Getting location..."}</p>
       )}
     </div>
   );

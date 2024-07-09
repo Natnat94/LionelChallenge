@@ -21,8 +21,16 @@ export default function ComplaintsMapComponent({ reportAComplaintPage }) {
       for (const complaint of complaints) {
         if (complaint.location) {
           const [latitude, longitude] = complaint.location.split(",");
-          complaint.latitude = latitude;
-          complaint.longitude = longitude;
+          const randNumber = Math.floor(Math.random() * 10) + 1;
+
+          complaint.latitude = (
+            parseFloat(latitude) +
+            0.0001 * randNumber
+          ).toFixed(6);
+          complaint.longitude = (
+            parseFloat(longitude) +
+            0.0001 * randNumber
+          ).toFixed(6);
           complaintsWithLocation.push(complaint);
         }
       }

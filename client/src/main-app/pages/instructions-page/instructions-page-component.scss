@@ -15,7 +15,7 @@
   }
 
   .welcome-instructions {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 400;
     color: white;
     margin-bottom: 32px;
@@ -37,16 +37,6 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5); /* Black with 50% opacity */
     z-index: 1;
-  }
-
-  .app-description {
-    font-size: 24px;
-    color: white;
-    margin-bottom: 32px;
-    padding: 0px 32px;
-    font-weight: 500;
-    max-width: 400px;
-    z-index: 10;
   }
 
   .welcome-page-next-button {
@@ -87,6 +77,10 @@
         font-weight: 600;
         font-size: 16px;
         margin-bottom: 4px;
+      }
+
+      .instruction-text {
+        font-size: 14px;
       }
     }
   }

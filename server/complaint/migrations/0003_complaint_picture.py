@@ -7,13 +7,15 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('complaint', '0002_comment'),
+        ("complaint", "0002_comment"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='complaint',
-            name='picture',
-            field=models.FileField(blank=True, null=True, upload_to=complaint.models.user_directory_path),
+            model_name="complaint",
+            name="picture",
+            field=models.FileField(
+                blank=True, null=True, upload_to=complaint.models.user_directory_path
+            ),
         ),
     ]

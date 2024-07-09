@@ -33,13 +33,13 @@ router.register(r"complaints", ComplaintViewSet)
 router.register(r"users", UserViewSet)
 router.register(r"register", RegisterView, basename="register")
 
-complaints_router = NestedSimpleRouter(router, r'complaints', lookup='complaint')
-complaints_router.register(r'comments', CommentViewSet, basename='comments')
+
+complaints_router = NestedSimpleRouter(router, r"complaints", lookup="complaint")
+complaints_router.register(r"comments", CommentViewSet, basename="comments")
 
 
 api_urlpatterns = [
     re_path(r"^$", schema_view, name="schema-swagger-ui"),
     path("", include(router.urls)),
     path("", include(complaints_router.urls)),
-
 ]

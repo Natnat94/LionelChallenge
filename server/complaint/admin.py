@@ -3,6 +3,7 @@ from django.contrib.gis import admin as gisAdmin
 
 from complaint.models import *
 
+
 # Register your models here.
 @admin.register(Complaint)
 class ComplaintAdmin(gisAdmin.ModelAdmin):

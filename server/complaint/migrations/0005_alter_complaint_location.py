@@ -7,13 +7,15 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('complaint', '0004_complaint_location'),
+        ("complaint", "0004_complaint_location"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='complaint',
-            name='location',
-            field=django.contrib.gis.db.models.fields.PointField(blank=True, null=True, srid=4326),
+            model_name="complaint",
+            name="location",
+            field=django.contrib.gis.db.models.fields.PointField(
+                blank=True, null=True, srid=4326
+            ),
         ),
     ]

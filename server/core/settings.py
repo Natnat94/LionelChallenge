@@ -147,7 +147,10 @@ AUTH_USER_MODEL = "user.User"
 
 REST_FRAMEWORK = {
     "TEST_REQUEST_DEFAULT_FORMAT": "json",
-    "DEFAULT_AUTHENTICATION_CLASSES": ("rest_framework.authentication.SessionAuthentication",),
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ),
     "PAGE_SIZE": 10,
 }
 
@@ -165,12 +168,16 @@ DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 
 AWS_ACCESS_KEY_ID = os.getenv("STORAGE_ACCESS_KEY", "AKIAIOSFODNN7EXAMPLE")
 
-AWS_SECRET_ACCESS_KEY = os.getenv("STORAGE_SECRET_KEY", "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY")
+AWS_SECRET_ACCESS_KEY = os.getenv(
+    "STORAGE_SECRET_KEY", "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
+)
 
 AWS_S3_USE_SSL = os.getenv("STORAGE_SSL", "false")
 
-AWS_S3_ENDPOINT_URL = os.getenv("STORAGE_ENDPOINT", "http://172.19.0.2:9000")
+AWS_S3_ENDPOINT_URL = os.getenv("STORAGE_ENDPOINT", "http://172.16.238.10:9000")
 
 AWS_STORAGE_BUCKET_NAME = os.getenv("STORAGE_BUCKET", "uploadedpictures")
 
 AWS_DEFAULT_ACL = None
+
+CORS_ALLOW_HEADERS = "*"

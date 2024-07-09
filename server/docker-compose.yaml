@@ -10,8 +10,8 @@ services:
       - '8000:8000'
     depends_on:
       - postgres
-    networks:
-      - backend
+
+    network_mode: host
 
   postgres:
     container_name: postgres_container
@@ -48,10 +48,10 @@ services:
       MINIO_ROOT_USER: AKIAIOSFODNN7EXAMPLE
       MINIO_ROOT_PASSWORD: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
     command: ['server', '/data', '--console-address', ':9001']
+
     networks:
       backend:
         ipv4_address: 172.16.238.10
-        ipv6_address: 2001:3984:3989::10
     volumes:
       - minio:/data
     ports:
@@ -64,6 +64,7 @@ volumes:
 
 networks:
   backend:
+    driver: bridge
     ipam:
         driver: default
         config:

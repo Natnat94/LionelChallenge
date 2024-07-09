@@ -38,12 +38,14 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    "django.contrib.gis",
     "django.contrib.staticfiles",
     "rest_framework",
+    "rest_framework_gis",
     "user",
     "complaint",
     "drf_yasg",
-     "corsheaders",
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
@@ -83,7 +85,7 @@ WSGI_APPLICATION = "core.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
+        "ENGINE": "django.contrib.gis.db.backends.postgis",
         "NAME": os.getenv("DATABASE_NAME", "postgres"),
         "USER": os.getenv("DATABASE_USER", "postgres"),
         "PASSWORD": os.getenv("DATABASE_PASSWORD", "SuperSecret"),
@@ -156,12 +158,12 @@ CORS_ALLOW_ALL_ORIGINS = True
 # STORAGES = {
 #     "default": {
 #         "BACKEND": "storages.backends.s3boto3.S3Boto3Storage",
-      
+
 #     },
 # }
 DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 
-AWS_ACCESS_KEY_ID = os.getenv("STORAGE_ACCESS_KEY","AKIAIOSFODNN7EXAMPLE")
+AWS_ACCESS_KEY_ID = os.getenv("STORAGE_ACCESS_KEY", "AKIAIOSFODNN7EXAMPLE")
 
 AWS_SECRET_ACCESS_KEY = os.getenv("STORAGE_SECRET_KEY", "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY")
 

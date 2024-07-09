@@ -35,6 +35,8 @@ RUN apt-get update && apt-get install -y curl libpq-dev build-essential --no-ins
     && rm -rf /var/lib/apt/lists/* \
     && rm -rf /src/*.deb
 
+RUN apt-get update && apt-get install -y binutils libproj-dev gdal-bin
+
 RUN curl -sSL https://install.python-poetry.org | python - --version 1.8.0
 ENV PATH="${PATH}:/root/.local/bin"
 RUN poetry config virtualenvs.create false

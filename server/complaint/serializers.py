@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Complaint, Comment
 from rest_framework.fields import CurrentUserDefault
+from drf_extra_fields.geo_fields import PointField
 
 
 __all__ = [
@@ -14,6 +15,7 @@ class ComplaintSerializer(serializers.ModelSerializer):
     # author = serializers.HiddenField(default=serializers.CurrentUserDefault())
     comment_count = serializers.SerializerMethodField()
     picture_url = serializers.SerializerMethodField()
+    location = PointField(required=False)
     class Meta:
         model = Complaint
         exclude = ['author',]

@@ -1,9 +1,16 @@
-// const HOST = "https://9ac5-92-174-89-249.ngrok-free.app";
-const HOST = "http://localhost:8000";
+const HOST = "https://1065-92-174-89-249.ngrok-free.app";
+// const HOST = "http://localhost:8000";
 
 export const get = async (path) => {
   const url = getUrl(path);
-  return (await fetch(url)).json();
+  const requestOptions = {
+    method: "GET",
+    headers: {
+      // "Content-Type": "application/json",
+      "ngrok-skip-browser-warning": true,
+    },
+  };
+  return (await fetch(url, requestOptions)).json();
 };
 
 export const post = async (path, data) => {
@@ -18,9 +25,10 @@ export const post = async (path, data) => {
 
   const requestOptions = {
     method: "POST",
-    // headers: {
-    //   "Content-Type": "application/json",
-    // },
+    headers: {
+      // "Content-Type": "application/json",
+      "ngrok-skip-browser-warning": true,
+    },
     body: formData,
   };
 

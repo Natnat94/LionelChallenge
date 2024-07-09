@@ -7,7 +7,7 @@ export default function WelcomePageComponent({ InstructionsPage }) {
       <img src="/wheelchairmap.png" className="welcome-page-small-img" />
       <div className="app-name">Clear Access</div>
       <div className="app-description">
-        Chaque signalement compte : participez à la création d'une ville plus
+        Chaque signalement compte: participez à la création d'une ville plus
         accessible pour tous.
       </div>
       <img src="/background.png" className="welcome-page-background-img" />

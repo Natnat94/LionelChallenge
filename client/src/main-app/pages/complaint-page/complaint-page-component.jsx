@@ -28,7 +28,9 @@ export default function ComplaintPageComponent({ complaintsMapPage }) {
     return (
       <div className="sent-complaint">
         <img className="success-image" src="/sent-complaint.png" />
-        <div className="complaint-validated">Your declaration is validated</div>
+        <div className="complaint-validated">
+          Votre déclaration est bien validée
+        </div>
       </div>
     );
   }
@@ -50,7 +52,7 @@ export default function ComplaintPageComponent({ complaintsMapPage }) {
         <div className="complaint-form-content">
           <div className="complaint-description">
             <div className="complaint-sub-header">
-              Add a description of the accessibility issue
+              Ajouter une description du probleme d’accessibilité
             </div>
             <TextFieldComponent
               label="Description"
@@ -60,25 +62,23 @@ export default function ComplaintPageComponent({ complaintsMapPage }) {
             />
           </div>
           <div className="complaint-address">
-            <div className="complaint-sub-header">
-              Add the address of the accessibility issue
-            </div>
+            <div className="complaint-sub-header">Adresse du lieu</div>
             <TextFieldComponent
-              label="Address"
+              label="Adresse"
               onChange={setAddress}
               value={address}
             />
           </div>
           <div className="complaint-upload-photo">
             <div className="complaint-sub-header">
-              Add photos of the accessibility issue
+              Ajouter une photo du problème d’accessibilité
             </div>
             <UploadPhotoButton
               selectedImage={selectedImage}
               setSelectedImage={setSelectedImage}
             />
           </div>
-          <ButtonComponent text="Send" onClick={handleSubmit} />
+          <ButtonComponent text="Suivant" onClick={handleSubmit} />
         </div>
       </div>
     </div>

@@ -1,16 +1,16 @@
 .MuiButtonBase-root.button-component {
-  background-color: #656363;
+  background-color: #2f2fff;
   text-transform: none;
 
   &:hover {
-    background-color: #656363;
+    background-color: #2f2fff;
     border-color: #0062cc;
     box-shadow: none;
   }
 
   &:active {
     box-shadow: none;
-    background-color: #656363;
+    background-color: #2f2fff;
     border-color: #005cbf;
   }
 }
